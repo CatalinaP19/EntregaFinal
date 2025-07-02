@@ -1,0 +1,627 @@
+:root {
+    --primary: #af672d;
+    --secondary: #085c52;
+    --accent: #7f1100;
+    --background: #dacfbd;
+    --surface: #ffffff;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border: #dadce0;
+
+    /* Espaciado fluido */
+    --space-xs: clamp(0.25rem, 1vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 2vw, 1rem);
+    --space-md: clamp(1rem, 3vw, 1.5rem);
+    --space-lg: clamp(1.5rem, 4vw, 2rem);
+    --space-xl: clamp(2rem, 5vw, 3rem);
+
+    /* Tipografía */
+    --font-sm: clamp(0.875rem, 2vw, 1rem);
+    --font-base: clamp(1rem, 2.5vw, 1.125rem);
+    --font-lg: clamp(1.125rem, 3vw, 1.25rem);
+    --font-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+    --font-2xl: clamp(1.5rem, 4vw, 2rem);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Google Sans', system-ui, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* === HEADER === */
+.header {
+    background: var(--surface);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-xl);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.logo {
+    font-size: var(--font-2xl);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.breadcrumb {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+/* === INSTRUCCIONES DEL EJERCICIO === */
+
+.instructions-title {
+    font-size: var(--font-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.requirement-card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.requirement-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+/* === GALERÍA DE PRODUCTOS === */
+.products-section {
+    margin-bottom: var(--space-xl);
+}
+
+.section-title {
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.product-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .product-image-container {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.product-image-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: block;
+  position: relative;
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.image-placeholder {
+    color: var(--text-secondary);
+    font-size: var(--font-lg);
+    text-align: center;
+}
+
+.product-badge {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: var(--accent);
+    color: white;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 16px;
+    font-size: var(--font-sm);
+    font-weight: 600;
+}
+
+.product-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+
+.product-title {
+    font-size: var(--font-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+}
+
+.product-description {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+}
+
+.product-price .original {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: var(--font-base);
+    margin-right: var(--space-xs);
+}
+
+.product-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: auto;
+}
+
+
+.btn {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: var(--font-sm);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #d3b786;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* === CÓDIGO DE EJEMPLO PARA MOSTRAR === */
+.code-examples {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.code-block {
+    background: #1a1a1a;
+    color: #e6e6e6;
+    padding: var(--space-md);
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: var(--font-sm);
+    overflow-x: auto;
+    margin: var(--space-sm) 0;
+}
+
+.code-comment {
+    color: #7dd3fc;
+}
+
+.code-keyword {
+    color: #fbbf24;
+}
+
+/* === DEVICE INDICATOR === */
+.device-indicator {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--primary);
+    color: white;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 767px) {
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1440px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+
+
+
+/* === SOLUCIÓN PARCIAL PARA GUÍA === */
+.solution-hint {
+    background: #f0f9ff;
+    border: 1px solid #0ea5e9;
+    border-radius: 8px;
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+.cart {
+    position: relative;
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+#cart-count {
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.5em;
+    font-size: var(--font-sm);
+    min-width: 1.5em;
+    text-align: center;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--surface);
+    padding: var(--space-lg);
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.product-description,
+.product-price {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.product-card.show-details .product-description,
+.product-card.show-details .product-price {
+    display: block;
+    margin-top: var(--space-sm);
+}
+
+/* Esconde la descripción de forma colapsada */
+.product-description,
+.product-price {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Mostrar con efecto slide */
+.product-card.show-details .product-description,
+.product-card.show-details .product-price {
+    max-height: 500px;
+    margin-top: var(--space-sm);
+}
+
+.product-card.show-details .product-description,
+.product-card.show-details .product-price {
+    background: #f9f9f9;
+    padding: var(--space-sm);
+    border-radius: 6px;
+}
+
+.product-card.show-details .product-description,
+.product-card.show-details .product-price {
+    background: #f9f9f9;
+    padding: var(--space-sm);
+    border-radius: 6px;
+}
+
+
+
+/* Mejor efecto al expandir detalles */
+.product-description,
+.product-price {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    padding: 0 var(--space-sm);
+}
+
+.product-card.show-details .product-description,
+.product-card.show-details .product-price {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: var(--space-sm);
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: var(--space-sm);
+}
+
+/* Mejora visual de tarjetas */
+.product-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+}
+
+/* Animación sutil en botones */
+.btn {
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    /* Elimina el subrayado */
+}
+
+a:hover {
+    color: var(--primary);
+    /* Cambia el color al pasar el mouse */
+    text-decoration: underline;
+    /* Subraya el texto */
+}
+
+.menu-section {
+    background: #fff8f0;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.section-title1 {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.section-title2 {
+    background-color: var(--secondary);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.section-title3 {
+    background-color: var(--accent);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.menu-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.menu-item h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.menu-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.menu-item span {
+    font-weight: bold;
+    color: #D2691E;
+}
+
+.btn-menu1 {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-menu2 {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-menu3 {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+.btn-menu1:hover {
+    background: #d3b786;
+    transform: translateY(-1px);
+}
+
+.btn-menu2:hover {
+    background: #688666;
+    transform: translateY(-1px);
+}
+.btn-menu3:hover {
+    background: #975f5f;
+    transform: translateY(-1px);
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: var(--surface);
+    color: var(--accent);
+}
+
+
